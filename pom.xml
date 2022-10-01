@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ginkl</groupId>
     <artifactId>bei</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0</version>
     <name>bei</name>
     <description>bei</description>
     <properties>
@@ -43,6 +43,7 @@
     </dependencies>
 
     <build>
+        <finalName>bei</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
