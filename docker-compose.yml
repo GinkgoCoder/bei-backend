@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  bei-backend:
+    image: bei-backend
+    container_name: bei-backend
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - bei-mongodb
+    networks:
+      - bei-network
+    environment:
+      MONGODB_USERNAME: admin
+      MONGODB_PASSWORD: admin
+      MONGODB_PORT: 27017
+      MONGODB_HOST: bei-mongodb
+
+  bei-mongodb:
+    image: mongo:6.0
+    container_name: bei-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    networks:
+      - bei-network
+    volumes:
+      - bei-data:/data/db
+
+networks:
+  bei-network:
+
+volumes:
+  bei-data:
